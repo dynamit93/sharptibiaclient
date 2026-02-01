@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{FE7531E7-7755-4766-828A-2E7BB03D4E06}</ProjectGuid>
@@ -132,6 +132,7 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -201,6 +202,7 @@
     <Compile Include="Protocol\TibiaGamePacketParserFactory.cs" />
     <Compile Include="Protocol\TibiaGameProtocol.cs" />
     <Compile Include="Protocol\TibiaMovieStream.cs" />
+    <Compile Include="Protocol\TibiaNetworkStream.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConnectDialog.xml">

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Sockets;
@@ -141,6 +141,18 @@ namespace CTC
             AddU16((UInt16)s.Length);
             foreach (byte c in s)
                 AddByte(c);
+        }
+
+        public int Length
+        {
+            get { return Size; }
+        }
+
+        public byte[] GetBytes()
+        {
+            byte[] bytes = new byte[Size];
+            Array.Copy(Data, bytes, Size);
+            return bytes;
         }
     }
 }
