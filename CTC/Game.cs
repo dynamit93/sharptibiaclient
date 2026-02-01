@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -74,26 +73,22 @@ namespace CTC
             Desktop.NeedsLayout = true;
 
             ///////////////////////////////////////////////////////////////////
-            // For debugging read a TMV file as input
+            // Connect to a server using static credentials
 
-            FileInfo file = new FileInfo("./Test.tmv");
-            Stream virtualStream = null;
+            const string ServerHost = "127.0.0.1";
+            const int ServerPort = 7172;
+            const string AccountName = "Test";
+            const string CharacterName = "Test";
+            const string Password = "Test";
+            const ushort ClientVersion = 772;
+            const ushort ClientOS = 2;
 
-            FileStream fileStream = file.OpenRead();
-            if (file.Extension == ".tmv")
-                virtualStream = new System.IO.Compression.GZipStream(fileStream, System.IO.Compression.CompressionMode.Decompress);
-            else
-                virtualStream = fileStream;
+            uint accountNumber = TibiaNetworkStream.ParseAccountNumber(AccountName, 1);
+            TibiaNetworkStream networkStream = new TibiaNetworkStream(ServerHost, ServerPort);
+            networkStream.SendGameLogin(accountNumber, CharacterName, Password, ClientVersion, ClientOS);
 
-            // Add the initial state
-            TibiaMovieStream MovieStream = new TibiaMovieStream(virtualStream, file.Name);
-            ClientState State = new ClientState(MovieStream);
+            ClientState State = new ClientState(networkStream);
 
-            MovieStream.PlaybackSpeed = 50;
-            State.ForwardTo(new TimeSpan(0, 30, 0));
-
-            // If fast-forwarded, client tab immediately,
-            // otherwise delay until we receive the login packet.
             if (State.Viewport.Player == null)
             {
                 State.Viewport.Login += delegate(ClientViewport Viewport)

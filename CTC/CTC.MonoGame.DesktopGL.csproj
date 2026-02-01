@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CTC</RootNamespace>
+    <AssemblyName>CTC</AssemblyName>
+    <DefineConstants>DESKTOPGL;$(DefineConstants)</DefineConstants>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.4.1" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MonoGameContentReference Include="Content/Content.mgcb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DebugWindow.cs;DebugWindow.Designer.cs" />
+    <EmbeddedResource Remove="DebugWindow.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TibiaProtocolMap.xml" />
+  </ItemGroup>
+</Project>

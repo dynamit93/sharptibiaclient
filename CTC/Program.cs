@@ -2,7 +2,7 @@ using System;
 
 namespace CTC
 {
-#if WINDOWS || XBOX
+#if WINDOWS || XBOX || DESKTOPGL || LINUX || MACOS
     static class Program
     {
         /// <summary>
@@ -10,9 +10,11 @@ namespace CTC
         /// </summary>
         static void Main(string[] args)
         {
-            // Present the debug window
+            // Present the debug window on Windows only.
+#if WINDOWS
             DebugWindow dbw = new DebugWindow();
             dbw.Show();
+#endif
 
             // Then run the game
             using (Game game = new Game())
