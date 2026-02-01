@@ -1,0 +1,20 @@
+#----------------------------------- Global Properties -----------------------------------#
+#outputDir:bin/$(Platform)/$(Configuration)/Content
+#intermediateDir:obj/$(Platform)/$(Configuration)/Content
+#platform:DesktopGL
+#profile:Reach
+#compress:False
+
+#rootDir:../../CTCContent
+
+#------------------------------------ Content ------------------------------------#
+
+#begin DefaultSkin.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:DefaultSkin.bmp
+
+#begin StandardFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:StandardFont.spritefont

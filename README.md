@@ -16,6 +16,17 @@ The GameCanvas class separately hooks into the events provided by the protocol i
 #Protocol
 It only support client 7.4 right now (mostly because I didn't feel like implementing RSA). It's coded with multi-protocol support in mind though, so if you want to add new protocols what you need to do is edit create a new protocol map XML file, and add new parsing delegates in TibiaGameParserFactory.cs.
 
+#Building with MonoGame (DesktopGL)
+This repo includes a MonoGame DesktopGL project at `CTC/CTC.MonoGame.DesktopGL.csproj`.
+
+1. Restore packages:
+   `dotnet restore CTC/CTC.MonoGame.DesktopGL.csproj`
+2. Build:
+   `dotnet build CTC/CTC.MonoGame.DesktopGL.csproj -c Release`
+
+The MonoGame project excludes the WinForms DebugWindow and uses `CTC/Content/Content.mgcb`
+to build `DefaultSkin.bmp` and `StandardFont.spritefont` from `CTCContent`.
+
 #Contributors
 * Moi, Hampus Nilsson, or Remere for short. :)
 
